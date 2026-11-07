@@ -17,7 +17,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 html,body{height:100%;overflow:hidden}
 body{
   background:#3a0704;
-  display:flex;align-items:center;justify-content:center;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
   overscroll-behavior:none;
   touch-action:manipulation;
   -webkit-user-select:none;user-select:none;
@@ -30,15 +30,15 @@ body::before{
   z-index:0;
 }
 .frame{
-  position:relative;z-index:1;
-  width:min(100vw, calc(100vh * 390 / 844));
-  height:min(100vh, calc(100vw * 844 / 390));
+  position:relative;z-index:1;flex:0 0 auto;
+  width:min(100vw, calc((100vh - 20px) * 390 / 844));
+  height:min(calc(100vh - 20px), calc(100vw * 844 / 390));
   box-shadow:0 10px 40px rgba(0,0,0,.45);
 }
 @supports (height:100dvh){
   .frame{
-    width:min(100vw, calc(100dvh * 390 / 844));
-    height:min(100dvh, calc(100vw * 844 / 390));
+    width:min(100vw, calc((100dvh - 20px) * 390 / 844));
+    height:min(calc(100dvh - 20px), calc(100vw * 844 / 390));
   }
 }
 .frame img{
@@ -55,6 +55,15 @@ body::before{
   -webkit-touch-callout:none;
 }
 .hot:active{background:rgba(255,255,255,.10)}
+/* 备案号：独占图片下方 20px 条带，不覆盖画面 */
+.icp{
+  position:relative;z-index:2;
+  flex:0 0 20px;height:20px;width:100%;
+  display:flex;align-items:center;justify-content:center;
+  font:9px/1 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+  letter-spacing:.4px;
+}
+.icp a{color:rgba(228,199,150,.92);text-decoration:none}
 </style>
 </head>
 <body>
@@ -63,5 +72,6 @@ body::before{
     <a class="hot" href="https://uri.amap.com/marker?position=120.161552,30.254782&name=%E6%9D%AD%E5%B7%9E%E5%90%9B%E6%82%A6%E9%85%92%E5%BA%97&src=shouyan-invite&coordinate=gaode&callnative=1" target="_blank" rel="noopener"
        role="link" aria-label="打开高德地图，导航到杭州君悦酒店"></a>
   </div>
+  <div class="icp"><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">浙ICP备2026094381号</a></div>
 </body>
 </html>
